@@ -1,0 +1,11 @@
+from flask import Flask, request, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config["SQLAlCHEMY_DATABASE_URI"] = "sqlite:////mnt/c/Users/antho/Documents/database_files/filestorage.db"
+db = SQLAlchemy(app)
+
+class FileContents(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(300))
+    data = db.Column(db.LargeBinary)
